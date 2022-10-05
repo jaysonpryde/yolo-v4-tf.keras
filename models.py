@@ -106,7 +106,8 @@ class Yolov4(object):
                                 callbacks=callbacks,
                                 initial_epoch=initial_epoch)
     # raw_img: RGB
-    def predict_img(self, raw_img, random_color=True, plot_img=True, figsize=(10, 10), show_text=True, return_output=False):
+    #def predict_img(self, raw_img, random_color=True, plot_img=True, figsize=(10, 10), show_text=True, return_output=False):
+    def predict_img(self, raw_img, random_color=True, plot_img=False, figsize=(10, 10), show_text=True, return_output=True):
         print('img shape: ', raw_img.shape)
         img = self.preprocess_img(raw_img)
         imgs = np.expand_dims(img, axis=0)
@@ -122,7 +123,8 @@ class Yolov4(object):
         else:
             return detections
 
-    def predict(self, img_path, random_color=True, plot_img=True, figsize=(10, 10), show_text=True):
+    #def predict(self, img_path, random_color=True, plot_img=True, figsize=(10, 10), show_text=True):
+    def predict(self, img_path, random_color=True, plot_img=False, figsize=(10, 10), show_text=True):
         raw_img = cv2.imread(img_path)[:, :, ::-1]
         return self.predict_img(raw_img, random_color, plot_img, figsize, show_text)
 
